@@ -25,22 +25,22 @@ Route::get('p/{id}', 'PostController@showPost');
 
 Route::get('login', function()
 {
-  return View::make('user.login')
+  return View::make('forms.login')
     ->with('title', 'Login');
 });
 
 Route::get('register', function()
 {
-  return View::make('user.register')
+  return View::make('forms.register')
     ->with('title', 'Register');
 });
 
 Route::post('register', 'UserController@register');
 
-Route::get('newpost', function()
+Route::get('submit', function()
 {
-  return View::make('post.new')
+  return View::make('forms.submit')
     ->with('title', 'New Post');
 });
 
-Route::post('newpost', 'PostController@new');
+Route::post('submit', 'PostController@new');

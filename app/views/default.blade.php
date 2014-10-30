@@ -17,7 +17,7 @@
     </ul>
     <section class="top-bar-section">
       <ul class="right">
-        <li><a href="/newpost">New Post</a></li>
+        <li><a href="/submit">New Post</a></li>
         <li class="has-dropdown"><a href="#"><i class="fa fa-user fa-lg"></i> User</a>
           <ul class="dropdown">
             <li><a href="#"><i class="fa fa-sign-out fa-lg"></i> Sign out</a></li>

@@ -17,10 +17,15 @@
     </ul>
     <section class="top-bar-section">
       <ul class="right">
-        <li><a href="/submit">New Post</a></li>
+        <li><a href="/submit"><i class="fa fa-pencil fa-lg"></i> New Post</a></li>
         <li class="has-dropdown"><a href="#"><i class="fa fa-user fa-lg"></i> User</a>
           <ul class="dropdown">
-            <li><a href="#"><i class="fa fa-sign-out fa-lg"></i> Sign out</a></li>
+            @if (Auth::check())
+              <li><a href="#"><i class="fa fa-sign-out fa-lg"></i> Sign out</a></li>
+            @else
+              <li><a href="/signin"><i class="fa fa-sign-in fa-lg"></i> Sign in</a></li>
+              <li><a href="/signup"><i class="fa fa-plus fa-lg"></i> Sign up</a></li>
+            @endif
           </ul>
         </li>
       </ul>

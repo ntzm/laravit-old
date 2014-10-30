@@ -12,7 +12,7 @@ class UserController extends BaseController {
       ->with('title', $user->name);
   }
 
-  public function login($name, $password, $remember)
+  public function signin($name, $password, $remember)
   {
     $remember = is_bool($remember) ? $remember : false;
 
@@ -28,7 +28,7 @@ class UserController extends BaseController {
     }
   }
 
-  public function register()
+  public function signup()
   {
     $name = Input::get('username');
     $password = Input::get('password');

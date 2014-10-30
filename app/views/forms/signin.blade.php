@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
     <div class="column">
-      <h2>Login</h2>
+      <h2>Sign In</h2>
       {{ Form::open(array('action', 'UserController@login')) }}
         {{ Form::label('name', 'Username') }}
         {{ Form::text('name') }}

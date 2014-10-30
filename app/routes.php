@@ -23,19 +23,19 @@ Route::get('r/{id}', 'SubController@showSub');
 
 Route::get('p/{id}', 'PostController@showPost');
 
-Route::get('login', function()
+Route::get('signin', function()
 {
-  return View::make('forms.login')
-    ->with('title', 'Login');
+  return View::make('forms.signin')
+    ->with('title', 'Sign In');
 });
 
-Route::get('register', function()
+Route::get('signup', function()
 {
-  return View::make('forms.register')
-    ->with('title', 'Register');
+  return View::make('forms.signup')
+    ->with('title', 'Sign Up');
 });
 
-Route::post('register', 'UserController@register');
+Route::post('signup', 'UserController@signup');
 
 Route::get('submit', function()
 {

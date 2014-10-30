@@ -33,15 +33,17 @@ class PostController extends BaseController {
 
     if ($validator->fails()) {
       Input::flash();
+
       return Redirect::to('submit')->withErrors($validator);
     } else {
-      Post::create(array(
+      $post = Post::create(array(
         'title'  => $title,
         'url'    => $url,
         'sub_id' => Sub::where('name', '=', $sub)->first()->id,
-
         'user_id' => 1
       ));
+
+      return Redirect::to('p/' . $post->id);
     }
   }
 

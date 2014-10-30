@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/foundation.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/foundation.min.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
   <title>{{{ $title }}} | Laravit</title>
 </head>
 <body>
@@ -41,9 +41,9 @@
     </section>
   </nav>
 @yield('content')
-  <script src="js/jquery.min.js"></script>
-  <script src="js/foundation.min.js"></script>
-  <script src="js/fastclick.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/fastclick.min.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

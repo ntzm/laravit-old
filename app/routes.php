@@ -42,9 +42,12 @@ Route::post('signup', 'UserController@newUser');
 Route::get('signout', 'UserController@signOutUser');
 
 // Submitting a new post
-Route::get('submit', function()
+Route::get('submit', array('before' => 'auth', function()
 {
   return View::make('forms.submit')
     ->with('title', 'New Post');
-});
-Route::post('submit', 'PostController@newPost');
+}));
+Route::post('submit', array(
+  'before' => 'auth',
+  'uses' => 'PostController@newPost'
+));

@@ -26,7 +26,7 @@ class UserController extends BaseController {
         'password' => $password
       ), $remember)
     ) {
-      return Redirect::to('/');
+      return Redirect::intended('/');
 
     } else {
       Input::flash();
@@ -53,7 +53,7 @@ class UserController extends BaseController {
         'password' => $password
       ),
       array(
-        'name' => 'required|min:3|unique:users',
+        'name' => 'required|min:3|max:20|unique:users',
         'password' => 'required|min:8'
       )
     );

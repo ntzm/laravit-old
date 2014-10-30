@@ -2,6 +2,6 @@
 
 class CmtVote extends Eloquent {
 
-  protected $table = 'postvotes';
+  protected $table = 'cmtvotes';
 
 }

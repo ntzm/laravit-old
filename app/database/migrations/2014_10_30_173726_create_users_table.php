@@ -3,21 +3,21 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSubsTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('subs', function(Blueprint $table) {
+		Schema::create('users', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->softDeletes();
+			$table->string('remember_token', 100)->nullable();
 			$table->string('name', 20);
-			$table->integer('owner_id')->unsigned();
+			$table->string('password', 60);
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('subs');
+		Schema::drop('users');
 	}
 }

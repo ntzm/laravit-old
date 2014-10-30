@@ -13,9 +13,9 @@
         {{ Form::text('sub') }}
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
-      @foreach ($errors->all() as $message)
+@foreach ($errors->all() as $message)
         <p>{{{ $message }}}</p>
-      @endforeach
+@endforeach
     </div>
   </div>
 @stop

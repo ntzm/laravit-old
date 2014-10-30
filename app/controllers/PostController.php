@@ -21,19 +21,27 @@ class PostController extends BaseController {
     $validator = Validator::make(
       array(
         'title' => $title,
-        'url' => $url,
-        'sub' => $sub
+        'url'   => $url,
+        'sub'   => $sub
       ),
       array(
         'title' => 'required',
-        'url' => 'required|active_url',
-        'sub' => 'required|exists:subs,name'
+        'url'   => 'required|active_url',
+        'sub'   => 'required|exists:subs,name'
       )
     );
 
     if ($validator->fails()) {
       Input::flash();
       return Redirect::to('submit')->withErrors($validator);
+    } else {
+      Post::create(array(
+        'title'  => $title,
+        'url'    => $url,
+        'sub_id' => Sub::where('name', '=', $sub)->first()->id,
+
+        'user_id' => 1
+      ));
     }
   }
 

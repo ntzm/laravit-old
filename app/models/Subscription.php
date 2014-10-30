@@ -2,6 +2,6 @@
 
 class Subscription extends Eloquent {
 
-  protected $table = 'postvotes';
+  protected $table = 'subscriptions';
 
 }

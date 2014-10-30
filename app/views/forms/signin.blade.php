@@ -11,6 +11,7 @@
         {{ Form::password('password') }}
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
+      {{ Session::get('error') }}
     </div>
   </div>
 @stop

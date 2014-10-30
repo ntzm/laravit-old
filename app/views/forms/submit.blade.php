@@ -13,8 +13,8 @@
         {{ Form::text('sub') }}
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
-@foreach ($errors->all() as $message)
-        <p>{{{ $message }}}</p>
+@foreach ($errors->all('<p>:message</p>') as $message)
+        {{ $message }}
 @endforeach
     </div>
   </div>

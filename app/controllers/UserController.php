@@ -6,31 +6,45 @@ class UserController extends BaseController {
   {
     $user = User::find($id);
 
-    // Validation here
+    // Use findorfail here
 
     return View::make('profile')
       ->with('title', $user->name);
   }
 
-  public function signin($name, $password, $remember)
+  public function signInUser()
   {
+    $name     = Input::get('name');
+    $password = Input::get('password');
+    $remember = Input::get('remember');
+
     $remember = is_bool($remember) ? $remember : false;
 
-    if(Auth::attempt(
+    if (Auth::attempt(
       array(
-        'name' => $name,
+        'name'     => $name,
         'password' => $password
       ), $remember)
     ) {
-      return Redirect::intended('/');
+      return Redirect::to('/');
+
     } else {
-      return Redirect::to('login')->with('message', 'Logn Failed');
+      Input::flash();
+
+      return Redirect::to('signin')
+        ->with('error', 'Authentication Failed');
     }
+  }
+
+  public function signOutUser()
+  {
+    Auth::logout();
+    return Redirect::to('/');
   }
 
   public function newUser()
   {
-    $name = Input::get('username');
+    $name = Input::get('name');
     $password = Input::get('password');
 
     $validator = Validator::make(
@@ -45,11 +59,15 @@ class UserController extends BaseController {
     );
 
     if ($validator->fails()) {
-      return Redirect::to('register')->with('messages', $validator->messages());
+      return Redirect::to('signup')
+        ->withErrors($validator);
+
     } else {
       $hash = Hash::make($password);
 
       User::create(array('name' => $name, 'password' => $hash));
+
+      return Redirect::to('/');
     }
   }
 

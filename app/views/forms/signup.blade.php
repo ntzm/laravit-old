@@ -11,6 +11,9 @@
         {{ Form::password('password') }}
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
+@foreach ($errors->all('<p>:message</p>') as $message)
+        {{ $message }}
+@endforeach
     </div>
   </div>
 @stop

@@ -28,7 +28,7 @@ Route::get('signin', function()
   return View::make('forms.signin')
     ->with('title', 'Sign In');
 });
-Route::post('signin', 'UserController@signin');
+Route::post('signin', 'UserController@signInUser');
 
 // Signing up
 Route::get('signup', function()
@@ -37,6 +37,9 @@ Route::get('signup', function()
     ->with('title', 'Sign Up');
 });
 Route::post('signup', 'UserController@newUser');
+
+// Signing out
+Route::get('signout', 'UserController@signOutUser');
 
 // Submitting a new post
 Route::get('submit', function()

@@ -28,7 +28,7 @@ class UserController extends BaseController {
     }
   }
 
-  public function signup()
+  public function newUser()
   {
     $name = Input::get('username');
     $password = Input::get('password');

@@ -36,7 +36,7 @@ Route::get('signup', function()
   return View::make('forms.signup')
     ->with('title', 'Sign Up');
 });
-Route::post('signup', 'UserController@signup');
+Route::post('signup', 'UserController@newUser');
 
 // Submitting a new post
 Route::get('submit', function()
@@ -44,4 +44,4 @@ Route::get('submit', function()
   return View::make('forms.submit')
     ->with('title', 'New Post');
 });
-Route::post('submit', 'PostController@submit');
+Route::post('submit', 'PostController@newPost');

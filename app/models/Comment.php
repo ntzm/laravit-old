@@ -1,9 +1,8 @@
 <?php
 
-class PostVote extends Eloquent {
+class Comment extends Eloquent {
 
-  protected $table   = 'postvotes';
-  public $timestamps = false;
+  protected $table = 'comments';
 
   public function post()
   {
@@ -13,5 +12,10 @@ class PostVote extends Eloquent {
   public function user()
   {
     return $this->belongsTo('User');
+  }
+
+  public function votes()
+  {
+    return $this->hasMany('CmtVote');
   }
 }

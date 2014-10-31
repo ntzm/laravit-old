@@ -48,7 +48,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('cmtvotes', function(Blueprint $table) {
-			$table->foreign('comments')->references('id')->on('comments')
+			$table->foreign('cmt_id')->references('id')->on('comments')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});

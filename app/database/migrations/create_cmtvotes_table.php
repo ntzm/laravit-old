@@ -11,7 +11,7 @@ class CreateCmtvotesTable extends Migration {
 			$table->increments('id');
 			$table->boolean('upvote');
 			$table->integer('user_id')->unsigned();
-			$table->integer('comments')->unsigned();
+			$table->integer('cmt_id')->unsigned();
 		});
 	}
 

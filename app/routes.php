@@ -18,7 +18,7 @@ Route::get('/', function()
 });
 
 // Displaying information
-Route::get('u/{id}', 'UserController@showProfile');
+Route::get('u/{name}', 'UserController@showProfile');
 Route::get('r/{id}', 'SubController@showSub');
 Route::get('p/{id}', 'PostController@showPost');
 

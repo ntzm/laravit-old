@@ -2,11 +2,9 @@
 
 class UserController extends BaseController {
 
-  public function showProfile($id)
+  public function showProfile($name)
   {
-    $user = User::find($id);
-
-    // Use findorfail here
+    $user = User::where('name', $name)->firstOrFail();
 
     return View::make('profile')
       ->with('title', $user->name);
@@ -20,12 +18,10 @@ class UserController extends BaseController {
 
     $remember = is_bool($remember) ? $remember : false;
 
-    if (Auth::attempt(
-      array(
-        'name'     => $name,
-        'password' => $password
-      ), $remember)
-    ) {
+    if (Auth::attempt(array(
+      'name'     => $name,
+      'password' => $password
+    ), $remember)) {
       return Redirect::intended('/');
 
     } else {
@@ -44,16 +40,16 @@ class UserController extends BaseController {
 
   public function newUser()
   {
-    $name = Input::get('name');
+    $name     = Input::get('name');
     $password = Input::get('password');
 
     $validator = Validator::make(
       array(
-        'name' => $name,
+        'name'     => $name,
         'password' => $password
       ),
       array(
-        'name' => 'required|min:3|max:20|unique:users',
+        'name'     => 'required|min:3|max:20|unique:users',
         'password' => 'required|min:8'
       )
     );
@@ -65,7 +61,10 @@ class UserController extends BaseController {
     } else {
       $hash = Hash::make($password);
 
-      User::create(array('name' => $name, 'password' => $hash));
+      User::create(array(
+        'name' => $name,
+        'password' => $hash
+      ));
 
       return Redirect::to('/');
     }

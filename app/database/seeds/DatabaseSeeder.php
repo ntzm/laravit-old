@@ -2,16 +2,16 @@
 
 class DatabaseSeeder extends Seeder {
 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
 	public function run()
 	{
-		Eloquent::unguard();
+		$tableNames = array('User', 'Post', 'Sub');
 
-		// $this->call('UserTableSeeder');
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+		foreach ($tableNames as $tableName) {
+			$this->call($tableName . 'TableSeeder');
+		}
+
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
-
 }

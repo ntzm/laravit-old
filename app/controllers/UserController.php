@@ -2,6 +2,11 @@
 
 class UserController extends BaseController {
 
+  /**
+   * Show the user profile
+   * @param  string $name
+   * @return view
+   */
   public function showProfile($name)
   {
     $user = User::where('name', $name)->firstOrFail();
@@ -10,17 +15,18 @@ class UserController extends BaseController {
       ->with('title', $user->name);
   }
 
+  /**
+   * Attempt to sign in the user
+   * @return redirect
+   */
   public function signInUser()
   {
-    $name     = Input::get('name');
-    $password = Input::get('password');
     $remember = Input::get('remember');
-
     $remember = is_bool($remember) ? $remember : false;
 
     if (Auth::attempt(array(
-      'name'     => $name,
-      'password' => $password
+      'name'     => Input::get('name'),
+      'password' => Input::get('password')
     ), $remember)) {
       return Redirect::intended('/');
 
@@ -32,42 +38,42 @@ class UserController extends BaseController {
     }
   }
 
+  /**
+   * Sign out the user
+   * @return redirect
+   */
   public function signOutUser()
   {
     Auth::logout();
     return Redirect::to('/');
   }
 
+  /**
+   * Create a new user
+   * @return redirect
+   */
   public function newUser()
   {
-    $name     = Input::get('name');
-    $password = Input::get('password');
-
-    $validator = Validator::make(
-      array(
-        'name'     => $name,
-        'password' => $password
-      ),
-      array(
-        'name'     => 'required|min:3|max:20|unique:users',
-        'password' => 'required|min:8'
-      )
+    $rules = array(
+      'name'     => 'required|min:3|max:20|unique:users',
+      'password' => 'required|min:8'
     );
+
+    $validator = Validator::make(Input::all(), $rules);
 
     if ($validator->fails()) {
       return Redirect::to('signup')
         ->withErrors($validator);
 
     } else {
-      $hash = Hash::make($password);
+      $hash = Hash::make(Input::get('password'));
 
       User::create(array(
-        'name' => $name,
+        'name'     => Input::get('name'),
         'password' => $hash
       ));
 
       return Redirect::to('/');
     }
   }
-
 }

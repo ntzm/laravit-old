@@ -2,13 +2,17 @@
 
 class SubController extends BaseController {
 
+  /**
+   * Show a sub
+   * @param  string $name
+   * @return view
+   */
   public function showSub($name)
   {
     $sub = Sub::where('name', $name)->firstOrFail();
 
     return View::make('sub')
       ->with('title', $sub->name)
-      ->with('posts', Post::where('sub_id', $sub->id)->get());
+      ->with('posts', $sub->posts);
   }
-
 }

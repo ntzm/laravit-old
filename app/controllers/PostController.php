@@ -2,6 +2,11 @@
 
 class PostController extends BaseController {
 
+  /**
+   * Show a post
+   * @param  int  $id
+   * @return view
+   */
   public function showPost($id)
   {
     $post = Post::find($id);
@@ -12,6 +17,10 @@ class PostController extends BaseController {
       ->with('title', $post->title);
   }
 
+  /**
+   * Create a new post
+   * @return redirect
+   */
   public function newPost()
   {
     $title = Input::get('title');
@@ -46,5 +55,4 @@ class PostController extends BaseController {
       return Redirect::to('p/' . $post->id);
     }
   }
-
 }

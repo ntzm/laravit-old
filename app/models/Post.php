@@ -3,7 +3,7 @@
 class Post extends Eloquent {
 
   protected $table    = 'posts';
-  protected $fillable = array('title', 'content', 'sub_id', 'user_id');
+  protected $fillable = array('title', 'url', 'sub_id', 'user_id');
 
   public function user()
   {

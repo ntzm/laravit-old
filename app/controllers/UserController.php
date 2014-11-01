@@ -12,7 +12,8 @@ class UserController extends BaseController {
     $user = User::where('name', $name)->firstOrFail();
 
     return View::make('profile')
-      ->with('title', $user->name);
+      ->with('title', $user->name)
+      ->with('posts', $user->posts()->paginate(15));
   }
 
   /**

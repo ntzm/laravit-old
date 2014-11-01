@@ -21,7 +21,7 @@
         <li class="has-dropdown"><a href="/submit"><i class="fa fa-pencil fa-lg"></i> New</a>
           <ul class="dropdown">
             <li><a href="/submit"><i class="fa fa-pencil-square-o fa-lg"></i> Post</a></li>
-            <li><a href="#"><i class="fa fa-plus fa-lg"></i> Sub</a></li>
+            <li><a href="#"><i class="fa fa-code-fork fa-lg"></i> Sub</a></li>
           </ul>
         </li>
 @endif

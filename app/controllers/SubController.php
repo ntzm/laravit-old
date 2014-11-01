@@ -13,6 +13,6 @@ class SubController extends BaseController {
 
     return View::make('sub')
       ->with('title', $sub->name)
-      ->with('posts', $sub->posts()->paginate(5));
+      ->with('posts', $sub->posts()->paginate(15));
   }
 }

@@ -28,6 +28,11 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('comments', function(Blueprint $table) {
+			$table->foreign('parentcmt_id')->references('id')->on('comments')
+						->onDelete('restrict')
+						->onUpdate('restrict');
+		});
+		Schema::table('comments', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('restrict')
 						->onUpdate('restrict');
@@ -79,6 +84,9 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('comments_post_id_foreign');
 		});
 		Schema::table('comments', function(Blueprint $table) {
+			$table->dropForeign('comments_parentcmt_id_foreign');
+		});
+		Schema::table('comments', function(Blueprint $table) {
 			$table->dropForeign('comments_user_id_foreign');
 		});
 		Schema::table('postvotes', function(Blueprint $table) {
@@ -91,7 +99,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('cmtvotes_user_id_foreign');
 		});
 		Schema::table('cmtvotes', function(Blueprint $table) {
-			$table->dropForeign('cmtvotes_comments_foreign');
+			$table->dropForeign('cmtvotes_cmt_id_foreign');
 		});
 		Schema::table('subscriptions', function(Blueprint $table) {
 			$table->dropForeign('subscriptions_user_id_foreign');

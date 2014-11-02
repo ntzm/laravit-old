@@ -27,18 +27,13 @@ class PostController extends BaseController {
     $url   = Input::get('url');
     $sub   = Input::get('sub');
 
-    $validator = Validator::make(
-      array(
-        'title' => $title,
-        'url'   => $url,
-        'sub'   => $sub
-      ),
-      array(
-        'title' => 'required',
-        'url'   => 'required|active_url',
-        'sub'   => 'required|exists:subs,name'
-      )
+    $rules = array(
+      'title' => 'required|max:100',
+      'url'   => 'required|max:2083|active_url',
+      'sub'   => 'required|exists:subs,name'
     );
+
+    $validator = Validator::make(Input::all(), $rules);
 
     if ($validator->fails()) {
       Input::flash();
@@ -46,10 +41,10 @@ class PostController extends BaseController {
       return Redirect::to('submit')->withErrors($validator);
     } else {
       $post = Post::create(array(
-        'title'  => $title,
-        'url'    => $url,
-        'sub_id' => Sub::where('name', '=', $sub)->first()->id,
-        'user_id' => 1
+        'title'   => Input::get('title'),
+        'url'     => Input::get('url'),
+        'sub_id'  => Sub::where('name', Input::get('sub'))->first()->id,
+        'user_id' => Auth::user()->id
       ));
 
       return Redirect::to('p/' . $post->id);

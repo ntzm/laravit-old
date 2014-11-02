@@ -7,7 +7,7 @@ class UserController extends BaseController {
    * @param  string $name
    * @return view
    */
-  public function showProfile($name)
+  public function show($name)
   {
     $user = User::where('name', $name)->firstOrFail();
 
@@ -20,7 +20,7 @@ class UserController extends BaseController {
    * Attempt to sign in the user
    * @return redirect
    */
-  public function signInUser()
+  public function signIn()
   {
     $remember = Input::get('remember');
     $remember = is_bool($remember) ? $remember : false;
@@ -43,7 +43,7 @@ class UserController extends BaseController {
    * Sign out the user
    * @return redirect
    */
-  public function signOutUser()
+  public function signOut()
   {
     Auth::logout();
     return Redirect::to('/');
@@ -53,7 +53,7 @@ class UserController extends BaseController {
    * Create a new user
    * @return redirect
    */
-  public function newUser()
+  public function signUp()
   {
     $rules = array(
       'name'     => 'required|min:3|max:20|alpha_dash|unique:users',

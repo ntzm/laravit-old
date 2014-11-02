@@ -7,7 +7,7 @@ class SubController extends BaseController {
    * @param  string $name
    * @return view
    */
-  public function showSub($name)
+  public function show($name)
   {
     $sub = Sub::where('name', $name)->firstOrFail();
 

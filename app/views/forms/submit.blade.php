@@ -4,7 +4,7 @@
   <div class="row">
     <div class="column">
       <h2>New Post</h2>
-      {{ Form::open(array('action', 'PostController@newPost')) }}
+      {{ Form::open(array('action', 'PostController@create')) }}
         {{ Form::label('title', 'Title') }}
         {{ Form::text('title') }}
         {{ Form::label('url', 'URL') }}

@@ -7,7 +7,7 @@ class PostController extends BaseController {
    * @param  int  $id
    * @return view
    */
-  public function showPost($id)
+  public function show($id)
   {
     $post = Post::find($id);
 
@@ -21,7 +21,7 @@ class PostController extends BaseController {
    * Create a new post
    * @return redirect
    */
-  public function newPost()
+  public function create()
   {
     $title = Input::get('title');
     $url   = Input::get('url');

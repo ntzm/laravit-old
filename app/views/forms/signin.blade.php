@@ -9,9 +9,13 @@
         {{ Form::text('name') }}
         {{ Form::label('password', 'Password') }}
         {{ Form::password('password') }}
+        {{ Form::checkbox('remember') }}
+        {{ Form::label('remember', 'Remember me') }}
+        <br>
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
       {{ Session::get('error') }}
+      <a href="/signup">Don't have an account? Sign up here!</a>
     </div>
   </div>
 @stop

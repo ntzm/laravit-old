@@ -11,6 +11,9 @@
 |
 */
 
+// Always use CSRF protection on POST requests
+Route::when('*', 'csrf', array('post'));
+
 // Front page
 Route::get('/', function()
 {

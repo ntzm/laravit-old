@@ -11,10 +11,10 @@
         {{ Form::password('password') }}
         {{ Form::submit('Go!', array('class' => 'button')) }}
       {{ Form::close() }}
-@foreach ($errors->all('<p>:message</p>') as $message)
+      @foreach ($errors->all('<p>:message</p>') as $message)
         {{ $message }}
-@endforeach
-    <a href="/signin">Already have an account? Sign in here!</a>
+      @endforeach
+      <a href="/signin">Already have an account? Sign in here!</a>
     </div>
   </div>
 @stop

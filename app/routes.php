@@ -53,5 +53,16 @@ Route::get('submit', array('before' => 'auth', function()
 }));
 Route::post('submit', array(
   'before' => 'auth',
-  'uses' => 'PostController@create'
+  'uses'   => 'PostController@create'
+));
+
+// Creating a new sub
+Route::get('createsub', array('before' => 'auth', function()
+{
+  return View::make('forms.createsub')
+    ->with('title', 'Create Sub');
+}));
+Route::post('createsub', array(
+  'before' => 'auth',
+  'uses'   => 'SubController@create'
 ));

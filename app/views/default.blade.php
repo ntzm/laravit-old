@@ -21,7 +21,7 @@
           <li class="has-dropdown"><a href="/submit">New</a>
             <ul class="dropdown">
               <li><a href="/submit">Post</a></li>
-              <li><a href="#">Sub</a></li>
+              <li><a href="/createsub">Sub</a></li>
             </ul>
           </li>
         @endif

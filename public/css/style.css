@@ -1,3 +1,19 @@
+/* Fix top bar margin */
+
 .top-bar {
   margin-bottom: 1.25rem;
+}
+
+/* Styling vote buttons */
+
+.fa-arrow-up, .fa-arrow-down {
+  color: #aaa;
+}
+
+.fa-arrow-up.active, .fa-arrow-up:hover {
+  color: #27ae60;
+}
+
+.fa-arrow-down.active, .fa-arrow-down:hover {
+  color: #c0392b;
 }

@@ -50,4 +50,22 @@ class PostController extends BaseController {
       return Redirect::to('p/' . $post->id);
     }
   }
+
+  /**
+   * Edit an existing post
+   * @return redirect to edited post
+   */
+  public function edit()
+  {
+
+  }
+
+  /**
+   * Delete an existing post
+   * @return redirect to front page
+   */
+  public function delete()
+  {
+
+  }
 }

@@ -5,7 +5,7 @@ class SubController extends BaseController {
   /**
    * Show a sub
    * @param  string $name
-   * @return view
+   * @return view   sub with posts
    */
   public function show($name)
   {
@@ -18,7 +18,7 @@ class SubController extends BaseController {
 
   /**
    * Create a new sub
-   * @return redirect
+   * @return redirect to new sub
    */
   public function create()
   {
@@ -40,5 +40,23 @@ class SubController extends BaseController {
 
       return Redirect::to('r/' . Input::get('name'));
     }
+  }
+
+  /**
+   * Edit an existing sub
+   * @return redirect to edited sub
+   */
+  public function edit()
+  {
+
+  }
+
+  /**
+   * Delete an existing sub
+   * @return redirect to front page
+   */
+  public function delete()
+  {
+
   }
 }

@@ -1,18 +1,22 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+/**
+ * General
+ */
 
 // Always use CSRF protection on POST requests
 Route::when('*', 'csrf', array('post'));
+
+// Voting
+Route::post('vote', 'VoteController@vote');
+
+/**
+ * Displaying users, subs and posts
+ */
+
+Route::get('u/{user}', 'UserController@show');
+Route::get('r/{sub}', 'SubController@show');
+Route::get('r/{sub}/comments/{postId}', 'PostController@show');
 
 // Front page
 Route::get('/', function()
@@ -22,10 +26,9 @@ Route::get('/', function()
     ->with('posts', Post::paginate(15));
 });
 
-// Displaying information
-Route::get('u/{user}', 'UserController@show');
-Route::get('r/{sub}', 'SubController@show');
-Route::get('r/{sub}/comments/{postId}', 'PostController@show');
+/**
+ * User management
+ */
 
 // Signing in
 Route::get('signin', function()
@@ -46,27 +49,60 @@ Route::post('signup', 'UserController@signUp');
 // Signing out
 Route::get('signout', 'UserController@signOut');
 
+/**
+ * Post management
+ */
+
 // Submitting a new post
-Route::get('submit', array('before' => 'auth', function()
-{
-  return View::make('forms.submit')
-    ->with('title', 'New Post');
-}));
-Route::post('submit', array(
+Route::get('post/new', array(
+  'before' => 'auth', function()
+  {
+    return View::make('forms.submit')
+      ->with('title', 'New Post');
+  }
+));
+Route::post('post/new', array(
   'before' => 'auth',
   'uses'   => 'PostController@create'
 ));
 
+// Editing a post
+Route::post('post/edit', array(
+  'before' => 'auth',
+  'uses'   => 'PostController@edit'
+));
+
+// Deleting a post
+Route::post('post/delete', array(
+  'before' => 'auth',
+  'uses'   => 'PostController@delete'
+));
+
+/**
+ * Sub management
+ */
+
 // Creating a new sub
-Route::get('createsub', array('before' => 'auth', function()
-{
-  return View::make('forms.createsub')
-    ->with('title', 'Create Sub');
-}));
-Route::post('createsub', array(
+Route::get('sub/new', array(
+  'before' => 'auth', function()
+  {
+    return View::make('forms.createsub')
+      ->with('title', 'Create Sub');
+  }
+));
+Route::post('sub/new', array(
   'before' => 'auth',
   'uses'   => 'SubController@create'
 ));
 
-// Voting
-Route::post('vote', 'VoteController@vote');
+// Editing a sub
+Route::post('sub/edit', array(
+  'before' => 'auth',
+  'uses'   => 'SubController@edit'
+));
+
+// Deleting a sub
+Route::post('sub/delete', array(
+  'before' => 'auth',
+  'uses'   => 'SubController@delete'
+));

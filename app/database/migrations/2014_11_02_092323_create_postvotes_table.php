@@ -9,7 +9,7 @@ class CreatePostvotesTable extends Migration {
 	{
 		Schema::create('postvotes', function(Blueprint $table) {
 			$table->increments('id');
-			$table->boolean('upvote');
+			$table->string('type', 4);
 			$table->integer('user_id')->unsigned();
 			$table->integer('post_id')->unsigned();
 		});

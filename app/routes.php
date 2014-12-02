@@ -8,7 +8,10 @@
 Route::when('*', 'csrf', array('post'));
 
 // Voting
-Route::post('vote', 'VoteController@vote');
+Route::post('vote', array(
+  'before' => 'auth',
+  'uses'   => 'VoteController@vote'
+));
 
 /**
  * Displaying users, subs and posts

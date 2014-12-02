@@ -7,21 +7,19 @@ $(document)
     }
   });
   $('.vote').click(function() {
+    var postId = $(this).closest('.panel').attr('class').split('-')[1]
     $(this).toggleClass('active');
     if ($(this).hasClass('fa-arrow-up')) {
-      $('.vote.fa-arrow-down').removeClass('active');
+      $('.post-' + postId + ' .vote.fa-arrow-down').removeClass('active');
     } else if ($(this).hasClass('fa-arrow-down')) {
-      $('.vote.fa-arrow-up').removeClass('active');
+      $('.post-' + postId + ' .vote.fa-arrow-up').removeClass('active');
     }
     $.ajax({
       url: '/vote',
       method: 'post',
-      data: $(this).attr('class'),
-      success: function(ret) {
-        console.log(ret);
-      },
-      error: function() {
-        console.log("Whoops!");
+      data: {
+        'class': $(this).attr('class'),
+        'postId': postId
       }
     });
   });

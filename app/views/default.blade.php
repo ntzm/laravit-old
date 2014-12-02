@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/css/foundation.min.css">
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{{ $title }}} | Laravit</title>
 </head>
 <body>

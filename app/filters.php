@@ -68,3 +68,18 @@ Route::filter('csrf', function()
    throw new Illuminate\Session\TokenMismatchException;
   }
 });
+
+/**
+ * Handle 404 errors
+ */
+App::missing(function($exception)
+{
+  return Response::view('errors.missing', array('title' => '404'), 404);
+});
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+App::error(function(ModelNotFoundException $e)
+{
+    return Response::view('errors.missing', array('title' => '404'), 404);
+});

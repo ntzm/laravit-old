@@ -26,8 +26,8 @@
   </div>
   <div class="row">
     <div class="small-offset-1 columns">
-      <a href="/p/{{ $post->id }}">
-        <i class="fa fa-comments"></i> {{ $post->comments->count() }} comments
+      <a href="/r/{{ $post->sub->name }}/comments/{{ $post->id }}">
+        {{ $post->comments->count() }} comments
       </a>
     </div>
   </div>

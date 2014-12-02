@@ -7,14 +7,14 @@ class PostController extends BaseController {
    * @param  int  $id
    * @return view
    */
-  public function show($id)
+  public function show($sub, $postId)
   {
-    $post = Post::find($id);
-
-    // Validation here
+    $sub  = Sub::where('name', $sub)->firstOrFail();
+    $post = Post::find($postId);
 
     return View::make('post')
-      ->with('title', $post->title);
+      ->with('title', $post->title)
+      ->with('post', $post);
   }
 
   /**

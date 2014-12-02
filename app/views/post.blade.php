@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
     <div class="column">
-      <h2>{{{ $title }}}</h2>
+      @include('snippets.post', $post)
     </div>
   </div>
 @stop

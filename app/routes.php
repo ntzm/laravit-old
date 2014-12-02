@@ -17,14 +17,15 @@ Route::when('*', 'csrf', array('post'));
 // Front page
 Route::get('/', function()
 {
-  return View::make('default')
-    ->with('title', 'Front Page');
+  return View::make('sub')
+    ->with('title', 'Front Page')
+    ->with('posts', Post::paginate(15));
 });
 
 // Displaying information
-Route::get('u/{name}', 'UserController@show');
-Route::get('r/{name}', 'SubController@show');
-Route::get('p/{id}', 'PostController@show');
+Route::get('u/{user}', 'UserController@show');
+Route::get('r/{sub}', 'SubController@show');
+Route::get('r/{sub}/comments/{postId}', 'PostController@show');
 
 // Signing in
 Route::get('signin', function()

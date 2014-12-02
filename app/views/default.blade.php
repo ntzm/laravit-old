@@ -12,7 +12,12 @@
   <nav class="top-bar" data-topbar>
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">Laravit</a></h1>
+        <h1>
+          <a href="/">
+            <img src="/img/laravit-logo.png" height="30" width="30" alt="Laravit Logo" class="logo">
+            Laravit
+          </a>
+        </h1>
       </li>
       <li class="toggle-topbar"><a href="#">Menu</a></li>
     </ul>
@@ -21,8 +26,8 @@
         @if (Auth::check())
           <li class="has-dropdown"><a href="/submit">New</a>
             <ul class="dropdown">
-              <li><a href="/submit">Post</a></li>
-              <li><a href="/createsub">Sub</a></li>
+              <li><a href="/post/new">Post</a></li>
+              <li><a href="/sub/new">Sub</a></li>
             </ul>
           </li>
         @endif

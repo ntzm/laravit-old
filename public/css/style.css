@@ -4,6 +4,11 @@
   margin-bottom: 1.25rem;
 }
 
+/* Logo position fix */
+img.logo {
+  margin-bottom: 0.25rem;
+}
+
 /* Styling vote buttons */
 
 .vote.fa-arrow-up, .vote.fa-arrow-down {

@@ -66,3 +66,6 @@ Route::post('createsub', array(
   'before' => 'auth',
   'uses'   => 'SubController@create'
 ));
+
+// Voting
+Route::post('vote', 'VoteController@vote');

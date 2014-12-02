@@ -8,7 +8,13 @@ class UserTableSeeder extends Seeder {
 
     $faker = Faker\Factory::create();
 
-    for ($i = 0; $i < 50; $i++) {
+    // For testing purposes
+    User::create(array(
+      'name' => 'admin',
+      'password' => Hash::make('admin')
+    ));
+
+    for ($i = 0; $i < 49; $i++) {
       User::create(array(
         'name'       => substr(str_replace('.', '', $faker->userName), 0, 20),
         'password'   => Hash::make($faker->userName),

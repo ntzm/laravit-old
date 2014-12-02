@@ -6,14 +6,14 @@
 
 /* Styling vote buttons */
 
-.fa-arrow-up, .fa-arrow-down {
+.vote.fa-arrow-up, .vote.fa-arrow-down {
   color: #aaa;
 }
 
-.fa-arrow-up.active, .fa-arrow-up:hover {
+.vote.fa-arrow-up.active, .vote.fa-arrow-up:hover {
   color: #27ae60;
 }
 
-.fa-arrow-down.active, .fa-arrow-down:hover {
+.vote.fa-arrow-down.active, .vote.fa-arrow-down:hover {
   color: #c0392b;
 }

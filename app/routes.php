@@ -52,6 +52,12 @@ Route::post('signup', 'UserController@signUp');
 // Signing out
 Route::get('signout', 'UserController@signOut');
 
+// Checking the user is signed in (using AJAX)
+Route::get('authcheck', function()
+{
+  return json_encode(Auth::check());
+});
+
 /**
  * Post management
  */

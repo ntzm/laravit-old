@@ -19,7 +19,7 @@ if (!is_null($vote)) {
   </div>
   <div class="row">
     <div class="small-1 columns text-center">
-      <i class="fa fa-lg fa-arrow-down vote {{ $type === 'down' ? 'active' : '' }}"></i>
+      <div class="votes">{{ $post->votes()->count() }}</div>
     </div>
     <div class="small-11 columns">
       submitted {{ Helper::timeAgo($post->created_at) }} ago by
@@ -33,7 +33,10 @@ if (!is_null($vote)) {
     </div>
   </div>
   <div class="row">
-    <div class="small-offset-1 columns">
+    <div class="small-1 columns text-center">
+      <i class="fa fa-lg fa-arrow-down vote {{ $type === 'down' ? 'active' : '' }}"></i>
+    </div>
+    <div class="small-11 columns">
       <a href="/r/{{ $post->sub->name }}/comments/{{ $post->id }}">
         {{ $post->comments->count() }} comments
       </a>

@@ -51,6 +51,14 @@
   </nav>
   @yield('content')
 
+  <div id="guest-modal" class="reveal-modal" data-reveal>
+    <h2>You are not signed in!</h2>
+    <p class="lead">You cannot vote or comment without being signed in!</p>
+    <p>If you want to make an account, <a href="/signup">sign up here</a></p>
+    <p>If you already have an account, you can <a href="/signin">sign in here</a></p>
+    <a class="close-reveal-modal"><i class="fa fa-times"></i></a>
+  </div>
+
   <script src="/js/jquery.min.js"></script>
   <script src="/js/foundation.min.js"></script>
   <script src="/js/fastclick.min.js"></script>

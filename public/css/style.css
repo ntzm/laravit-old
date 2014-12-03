@@ -22,3 +22,10 @@ img.logo {
 .vote.fa-arrow-down.active, .vote.fa-arrow-down:hover {
   color: #c0392b;
 }
+
+/* Post score */
+
+.votes {
+  margin-top: -6px;
+  text-align: center;
+}

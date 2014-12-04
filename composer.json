@@ -8,7 +8,8 @@
 		"laravel/framework": "4.2.*"
 	},
 	"require-dev": {
-		"fzaninotto/faker": "1.5.*@dev"
+		"fzaninotto/faker": "1.5.*@dev",
+		"phpunit/phpunit": "4.0.*"
 	},
 	"autoload": {
 		"classmap": [

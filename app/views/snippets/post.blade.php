@@ -6,7 +6,7 @@ if (!is_null($vote)) {
   $type = $vote->type;
 }
 ?>
-<div class="panel post-{{ $post->id }}">
+<div class="panel post {{ $post->id }}">
   <div class="row">
     <div class="small-1 columns text-center">
       <i class="fa fa-lg fa-arrow-up vote {{ $type === 'up' ? 'active' : '' }}"></i>

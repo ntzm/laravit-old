@@ -22,23 +22,21 @@ class SubController extends BaseController {
    */
   public function create()
   {
-    $rules = array(
-      'name' => 'required|max:20|unique:subs'
-    );
+    $sub = new Sub();
 
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails()) {
-      return Redirect::to('createsub')
-        ->withErrors($validator->messages());
-
-    } else {
+    if ($sub->validate(Input::all()))
+    {
       Sub::create(array(
         'name'     => Input::get('name'),
-        'owner_id' => Auth::user()->id
+        'owner_id' => Auth::id()
       ));
 
       return Redirect::to('r/' . Input::get('name'));
+    }
+    else
+    {
+      return Redirect::to('sub/new')
+        ->withErrors($sub->messages());
     }
   }
 

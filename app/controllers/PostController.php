@@ -23,31 +23,25 @@ class PostController extends BaseController {
    */
   public function create()
   {
-    $title = Input::get('title');
-    $url   = Input::get('url');
-    $sub   = Input::get('sub');
+    $post = new Post();
 
-    $rules = array(
-      'title' => 'required|max:100',
-      'url'   => 'required|max:2083|active_url',
-      'sub'   => 'required|exists:subs,name'
-    );
-
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails()) {
-      Input::flash();
-
-      return Redirect::to('submit')->withErrors($validator);
-    } else {
+    if ($post->validate(Input::all()))
+    {
       $post = Post::create(array(
         'title'   => Input::get('title'),
         'url'     => Input::get('url'),
         'sub_id'  => Sub::where('name', Input::get('sub'))->first()->id,
-        'user_id' => Auth::user()->id
+        'user_id' => Auth::id()
       ));
 
-      return Redirect::to('p/' . $post->id);
+      return Redirect::to('r/' . $post->sub->name . '/comments/' . $post->id);
+    }
+    else
+    {
+      Input::flash();
+
+      return Redirect::to('post/new')
+        ->withErrors($post->messages());
     }
   }
 

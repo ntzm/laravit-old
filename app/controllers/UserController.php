@@ -28,10 +28,13 @@ class UserController extends BaseController {
     if (Auth::attempt(array(
       'name'     => Input::get('name'),
       'password' => Input::get('password')
-    ), $remember)) {
+    ), $remember))
+    {
       return Redirect::intended('/');
 
-    } else {
+    }
+    else
+    {
       Input::flash();
 
       return Redirect::to('signin')
@@ -55,18 +58,10 @@ class UserController extends BaseController {
    */
   public function signUp()
   {
-    $rules = array(
-      'name'     => 'required|min:3|max:20|alpha_dash|unique:users',
-      'password' => 'required|min:6'
-    );
+    $user = new User();
 
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails()) {
-      return Redirect::to('signup')
-        ->withErrors($validator);
-
-    } else {
+    if ($user->validate(Input::all()))
+    {
       $hash = Hash::make(Input::get('password'));
 
       User::create(array(
@@ -75,6 +70,11 @@ class UserController extends BaseController {
       ));
 
       return Redirect::to('/');
+    }
+    else
+    {
+      return Redirect::to('signup')
+        ->withErrors($user->messages());
     }
   }
 }

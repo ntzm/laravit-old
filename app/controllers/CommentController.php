@@ -2,17 +2,16 @@
 
 class CommentController extends BaseController {
 
+  /**
+   * Create a new comment
+   * @return redirect to somewhere idk
+   */
   public function create()
   {
-    $rules = array(
-      'content' => 'required|max:3000'
-    );
+    $comment = new Comment();
 
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails()) {
-      // TODO: Add error
-    } else {
+    if ($comment->validate(Input::all()))
+    {
       Comment::create(array(
         'post_id'      => Request::segment(2),
         'user_id'      => Auth::user()->id,

@@ -1,9 +1,19 @@
 <?php
 
-class Post extends Eloquent {
+class Post extends Elegant {
 
   protected $table    = 'posts';
   protected $fillable = array('title', 'url', 'sub_id', 'user_id');
+
+  protected $rules = array(
+    'title' => 'required|max:100',
+    'url'   => 'required|max:2083|active_url',
+    'sub'   => 'required|exists:subs,name'
+  );
+
+  /**
+   * Relationship
+   */
 
   public function user()
   {

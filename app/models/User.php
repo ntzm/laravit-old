@@ -3,13 +3,22 @@
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 
-class User extends Eloquent implements UserInterface {
+class User extends Elegant implements UserInterface {
 
 	use UserTrait;
 
 	protected $table    = 'users';
 	protected $hidden   = array('password', 'remember_token');
   protected $fillable = array('name', 'password');
+
+  protected $rules = array(
+    'name'     => 'required|min:3|max:20|alpha_dash|unique:users',
+    'password' => 'required|min:6'
+  );
+
+  /**
+   * Relationships
+   */
 
   public function posts()
   {

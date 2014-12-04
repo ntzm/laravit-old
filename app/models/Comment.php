@@ -4,6 +4,14 @@ class Comment extends Eloquent {
 
   protected $table = 'comments';
 
+  protected $rules = array(
+    'content' => 'required|max:3000'
+  );
+
+  /**
+   * Relationships
+   */
+
   public function post()
   {
     return $this->belongsTo('Post');

@@ -39,6 +39,7 @@
         @endif
           <ul class="dropdown">
             @if (Auth::check())
+              <li><a href="/u/{{ Auth::user()->name }}">Profile</a></li>
               <li><a href="/signout">Sign out</a></li>
             @else
               <li><a href="/signin">Sign in</a></li>

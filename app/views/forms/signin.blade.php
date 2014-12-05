@@ -4,7 +4,7 @@
   <div class="row">
     <div class="column">
       <h2>Sign In</h2>
-      {{ Form::open(array('action', 'UserController@signIn')) }}
+      {{ Form::open() }}
         {{ Form::label('name', 'Username') }}
         {{ Form::text('name') }}
         {{ Form::label('password', 'Password') }}

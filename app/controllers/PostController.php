@@ -4,8 +4,9 @@ class PostController extends BaseController {
 
   /**
    * Show a post
-   * @param  int  $id
-   * @return view
+   * @param  string $sub    name of sub
+   * @param  int    $postId id of post
+   * @return view           the requested post
    */
   public function show($sub, $postId)
   {
@@ -19,11 +20,11 @@ class PostController extends BaseController {
 
   /**
    * Create a new post
-   * @return redirect
+   * @return redirect to the new post
    */
   public function create()
   {
-    $post = new Post();
+    $post = new Post;
 
     if ($post->validate(Input::all()))
     {

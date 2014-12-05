@@ -8,7 +8,7 @@ class CommentController extends BaseController {
    */
   public function create()
   {
-    $comment = new Comment();
+    $comment = new Comment;
 
     if ($comment->validate(Input::all()))
     {

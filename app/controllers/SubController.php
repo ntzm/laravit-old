@@ -22,7 +22,7 @@ class SubController extends BaseController {
    */
   public function create()
   {
-    $sub = new Sub();
+    $sub = new Sub;
 
     if ($sub->validate(Input::all()))
     {

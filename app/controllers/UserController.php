@@ -25,13 +25,14 @@ class UserController extends BaseController {
     $remember = Input::get('remember');
     $remember = is_bool($remember) ? $remember : false;
 
-    if (Auth::attempt(array(
+    $signIn = Auth::attempt(array(
       'name'     => Input::get('name'),
       'password' => Input::get('password')
-    ), $remember))
+    ), $remember);
+
+    if ($signIn)
     {
       return Redirect::intended('/');
-
     }
     else
     {
@@ -58,7 +59,7 @@ class UserController extends BaseController {
    */
   public function signUp()
   {
-    $user = new User();
+    $user = new User;
 
     if ($user->validate(Input::all()))
     {

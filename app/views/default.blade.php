@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{{ $title }}} | Laravit</title>
+  <title>{{{ $sub or $title }}} | Laravit</title>
 </head>
 <body>
   <nav class="top-bar" data-topbar>
@@ -23,6 +23,11 @@
       <li class="toggle-topbar"><a href="#">Menu</a></li>
     </ul>
     <section class="top-bar-section">
+      @if (isset($sub))
+        <ul class="left">
+          <li><a href="/r/{{{ $sub }}}">{{{ $sub }}}</a></li>
+        </ul>
+      @endif
       <ul class="right">
         @if (Auth::check())
           <li class="has-dropdown"><a href="/submit">New</a>

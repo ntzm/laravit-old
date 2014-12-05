@@ -12,7 +12,7 @@ class SubController extends BaseController {
     $sub = Sub::where('name', $name)->firstOrFail();
 
     return View::make('sub')
-      ->with('title', $sub->name)
+      ->with('sub', $sub->name)
       ->with('posts', $sub->posts()->paginate(15));
   }
 

@@ -15,6 +15,7 @@ class PostController extends BaseController {
 
     return View::make('post')
       ->with('title', $post->title)
+      ->with('sub', $post->sub->name)
       ->with('post', $post);
   }
 

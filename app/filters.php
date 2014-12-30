@@ -11,15 +11,15 @@
 |
 */
 
-App::before(function($request)
+App::before(function ($request)
 {
-	//
+    //
 });
 
 
-App::after(function($request, $response)
+App::after(function ($request, $response)
 {
-	//
+    //
 });
 
 /*
@@ -33,19 +33,19 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth', function ()
 {
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('signin');
-		}
-	}
+    if (Auth::guest())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('signin');
+        }
+    }
 });
 
 /*
@@ -59,27 +59,27 @@ Route::filter('auth', function()
 |
 */
 
-Route::filter('csrf', function()
+Route::filter('csrf', function ()
 {
-	$token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
 
-  if (Session::token() != $token)
-  {
-   throw new Illuminate\Session\TokenMismatchException;
-  }
+    if (Session::token() != $token)
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
 
 /**
  * Handle 404 errors
  */
-App::missing(function($exception)
+App::missing(function ($exception)
 {
-  return Response::view('errors.missing', array('title' => '404'), 404);
+    return Response::view('errors.missing', ['title' => '404'], 404);
 });
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-App::error(function(ModelNotFoundException $e)
+App::error(function (ModelNotFoundException $e)
 {
-    return Response::view('errors.missing', array('title' => '404'), 404);
+    return Response::view('errors.missing', ['title' => '404'], 404);
 });

@@ -1,31 +1,31 @@
 /* Fix top bar margin */
 
 .top-bar {
-  margin-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 /* Logo position fix */
 img.logo {
-  margin-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 /* Styling vote buttons */
 
 .vote.fa-arrow-up, .vote.fa-arrow-down {
-  color: #aaa;
+    color: #aaa;
 }
 
 .vote.fa-arrow-up.active, .vote.fa-arrow-up:hover {
-  color: #27ae60;
+    color: #27ae60;
 }
 
 .vote.fa-arrow-down.active, .vote.fa-arrow-down:hover {
-  color: #c0392b;
+    color: #c0392b;
 }
 
 /* Post score */
 
 .votes {
-  margin-top: -6px;
-  text-align: center;
+    margin-top: -6px;
+    text-align: center;
 }

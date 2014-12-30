@@ -2,36 +2,36 @@
 
 class Post extends Elegant {
 
-  protected $table    = 'posts';
-  protected $fillable = array('title', 'url', 'sub_id', 'user_id');
+    protected $table = 'posts';
+    protected $fillable = ['title', 'url', 'sub_id', 'user_id'];
 
-  protected $rules = array(
-    'title' => 'required|max:100',
-    'url'   => 'required|max:2083|active_url',
-    'sub'   => 'required|exists:subs,name'
-  );
+    protected $rules = [
+        'title' => 'required|max:100',
+        'url'   => 'required|max:2083|active_url',
+        'sub'   => 'required|exists:subs,name'
+    ];
 
-  /**
-   * Relationship
-   */
+    /**
+     * Relationship
+     */
 
-  public function user()
-  {
-    return $this->belongsTo('User');
-  }
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 
-  public function sub()
-  {
-    return $this->belongsTo('Sub');
-  }
+    public function sub()
+    {
+        return $this->belongsTo('Sub');
+    }
 
-  public function comments()
-  {
-    return $this->hasMany('Comment');
-  }
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
 
-  public function votes()
-  {
-    return $this->hasMany('PostVote');
-  }
+    public function votes()
+    {
+        return $this->hasMany('PostVote');
+    }
 }

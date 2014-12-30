@@ -2,16 +2,17 @@
 
 class DatabaseSeeder extends Seeder {
 
-	public function run()
-	{
-		$tableNames = array('User', 'Post', 'Sub');
+    public function run()
+    {
+        $tableNames = ['User', 'Post', 'Sub'];
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-		foreach ($tableNames as $tableName) {
-			$this->call($tableName . 'TableSeeder');
-		}
+        foreach ($tableNames as $tableName)
+        {
+            $this->call($tableName . 'TableSeeder');
+        }
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    }
 }

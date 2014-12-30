@@ -1,26 +1,28 @@
 <?php
 
-class Elegant extends Eloquent
-{
-  protected $rules = array();
+class Elegant extends Eloquent {
+    protected $rules = [];
 
-  protected $messages;
+    protected $messages;
 
-  public function validate($data)
-  {
-    $validator = Validator::make($data, $this->rules);
+    public function validate($data)
+    {
+        $validator = Validator::make($data, $this->rules);
 
-    if ($validator->fails()) {
-      $this->messages = $validator->messages();
+        if ($validator->fails())
+        {
+            $this->messages = $validator->messages();
 
-      return false;
-    } else {
-      return true;
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
-  }
 
-  public function messages()
-  {
-    return $this->messages;
-  }
+    public function messages()
+    {
+        return $this->messages;
+    }
 }

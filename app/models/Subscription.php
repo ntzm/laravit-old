@@ -2,16 +2,16 @@
 
 class Subscription extends Eloquent {
 
-  protected $table   = 'subscriptions';
-  public $timestamps = false;
+    protected $table = 'subscriptions';
+    public $timestamps = false;
 
-  public function user()
-  {
-    return $this->belongsTo('User');
-  }
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 
-  public function sub()
-  {
-    return $this->belongsTo('Sub');
-  }
+    public function sub()
+    {
+        return $this->belongsTo('Sub');
+    }
 }

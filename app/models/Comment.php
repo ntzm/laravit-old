@@ -2,28 +2,28 @@
 
 class Comment extends Eloquent {
 
-  protected $table = 'comments';
+    protected $table = 'comments';
 
-  protected $rules = array(
-    'content' => 'required|max:3000'
-  );
+    protected $rules = [
+        'content' => 'required|max:3000'
+    ];
 
-  /**
-   * Relationships
-   */
+    /**
+     * Relationships
+     */
 
-  public function post()
-  {
-    return $this->belongsTo('Post');
-  }
+    public function post()
+    {
+        return $this->belongsTo('Post');
+    }
 
-  public function user()
-  {
-    return $this->belongsTo('User');
-  }
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 
-  public function votes()
-  {
-    return $this->hasMany('CmtVote');
-  }
+    public function votes()
+    {
+        return $this->hasMany('CmtVote');
+    }
 }
